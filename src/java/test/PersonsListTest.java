@@ -1,7 +1,6 @@
 package src.java.test;
 
 import org.junit.Assert;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import src.main.java.Person;
 import src.main.java.PersonAgeFilter;
@@ -13,9 +12,7 @@ import java.io.PrintStream;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-class PersonListTest {
+class PersonsListTest {
     ArrayList<Person> listTest;
 
     @Test
@@ -126,6 +123,42 @@ class PersonListTest {
         list.printPerson(expectedPerson);
 
         Assert.assertEquals(newOutput.toString(),outputStream.toString());
+    }
+
+    @Test
+    void testGetAge() {
+
+        //given
+        PersonsList list = new PersonsList();
+        Person person = new Person("name", LocalDate.of(2000, 2, 2), Person.Sex.MALE, "Email.address");
+        Person person1 = new Person("name1", LocalDate.of(2010, 2, 2), Person.Sex.FEMALE, "Email.address");
+        list.addPerson(person);
+        list.addPerson(person1);
+        //When
+        int expected1 = 13 ;
+        int actual1 = person1.getAge();
+        Assert.assertEquals(expected1,actual1);
+        int expected = 23 ;
+        int actual = person.getAge();
+        Assert.assertEquals(expected,actual);
+
+    }
+
+    @Test
+    void testGender() {
+
+        //given
+        PersonsList list = new PersonsList();
+        Person person = new Person("name", LocalDate.of(2000, 2, 2), Person.Sex.MALE, "Email.address");
+        Person person1 = new Person("name1", LocalDate.of(2010, 2, 2), Person.Sex.FEMALE, "Email.address");
+        list.addPerson(person);
+        list.addPerson(person1);
+        //When
+        Person.Sex expected1 = Person.Sex.FEMALE ;
+        Assert.assertEquals(expected1,person1.getGender());
+        Person.Sex expected = Person.Sex.MALE ;
+        Assert.assertEquals(expected,person.getGender());
+
     }
 
 }

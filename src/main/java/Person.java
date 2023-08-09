@@ -14,7 +14,7 @@ public class Person {
     private LocalDate birthday;
     private Sex gender;
     private String emailAddress;
-    private Date data;
+
 
 
     public Person(String name, LocalDate birthday, Sex gender, String emailAddress) {
@@ -46,5 +46,17 @@ public class Person {
 
     public LocalDate getBirthday() {
         return birthday;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setGender(Sex gender) {
+        this.gender = gender;
+    }
+
+    public void setBirthday(LocalDate birthday) {
+        this.birthday = birthday;
     }
 }
