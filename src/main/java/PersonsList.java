@@ -93,4 +93,12 @@ public class PersonsList {
 //        }
 //        return result.toString();
 //    }
+
+    PersonFilter personFilter = new PersonFilter() {
+        @Override
+        public boolean test(Person person) {
+            return person.getAge() == -1;
+        }
+    };
+
 }
